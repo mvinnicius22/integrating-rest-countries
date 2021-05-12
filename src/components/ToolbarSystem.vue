@@ -12,6 +12,7 @@
              outlined
              tile
              color="purple"
+             v-on:click="onClickButton"
       >
         <v-icon left
                 small
@@ -29,7 +30,12 @@
 
 <script>
 export default {
-  name: "ToolbarSystem"
+  name: "ToolbarSystem",
+  methods: {
+    onClickButton () {
+         this.$emit('clicked', false)
+     }
+  }
 }
 </script>
 
