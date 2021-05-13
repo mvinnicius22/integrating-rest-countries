@@ -14,14 +14,13 @@
              color="purple"
              v-on:click="onClickButton"
       >
-        <v-icon left
-                small
+        <v-icon small
                 dense
                 color="purple"
         >
           keyboard_return
         </v-icon>
-        <span class="pl-2" style="text-transform: none">
+        <span class="pl-2 hidden-xs-only" style="text-transform: none">
           Voltar
         </span>
       </v-btn>
