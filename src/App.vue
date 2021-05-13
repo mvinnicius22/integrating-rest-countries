@@ -53,3 +53,8 @@ export default {
   }),
 };
 </script>
+<style scoped>
+.v-application {
+   font-family: sans-serif !important;
+}
+</style>

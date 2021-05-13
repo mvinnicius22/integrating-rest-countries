@@ -4,22 +4,27 @@
   <v-container v-show="!viewPais">
     <v-flex d-flex>
       <v-layout wrap>
-        <v-flex md4 xs12 class="pl-6 pr-6">
+        <v-flex md4 sm6 xs12 class="pl-6 pr-6">
           <v-select
                 label="Escolha uma opção"
                 :items="optionsOne"
                 item-text="nome"
+                color="purple"
+                item-color="purple"
                 item-value="id"
                 v-model="selectOne"
+                @change="option = null"
           >
           </v-select>
         </v-flex>
-        <v-flex md4 xs12 class="pl-6 pr-6">
+        <v-flex md4 sm6 xs12 class="pl-6 pr-6">
           <v-select
                 v-if="selectOne == 1"
                 label="Escolha uma região"
-                :items="regioes"
+                :items="filteredRegioes"
                 item-text="region"
+                color="purple"
+                item-color="purple"
                 item-value="id"
                 v-model="regionId"
                 @input="option = 1"
@@ -30,6 +35,8 @@
                 label="Escolha uma capital"
                 :items="capitais"
                 item-text="capital"
+                color="purple"
+                item-color="purple"
                 item-value="id"
                 v-model="capitalId"
                 @input="option = 2"
@@ -40,6 +47,8 @@
                 label="Escolha uma língua"
                 :items="linguas"
                 item-text="lingua"
+                color="purple"
+                item-color="purple"
                 item-value="id"
                 v-model="linguaId"
                 @input="option = 3"
@@ -50,6 +59,8 @@
                 label="Escolha um país"
                 :items="paisesSelect"
                 item-text="pais"
+                color="purple"
+                item-color="purple"
                 item-value="id"
                 v-model="paisId"
                 @input="option = 4"
@@ -58,15 +69,17 @@
           <v-select
                 v-if="selectOne == 5"
                 label="Escolha uma região"
-                :items="regioes"
+                :items="filteredRegioes"
                 item-text="region"
+                color="purple"
+                item-color="purple"
                 item-value="id"
                 v-model="regionId"
                 @input="option = 5"
           >
           </v-select>
         </v-flex>
-        <v-flex d-flex md4 class="pl-6 pr-6 pt-sm-4 pt-xs-0">
+        <v-flex md4 :class="{'pesquisarRight': $vuetify.breakpoint.xs}" class="pl-6 pr-6 pt-md-4 pt-sm-0 pt-xs-0">
           <v-btn elevation="2"
                 color="purple"
                 @click="goFilter()"
@@ -250,6 +263,11 @@
         border: null
       },
     }),
+    computed: {
+      filteredRegioes(){
+          return this.regioes.filter(item => item.id != '')
+      }
+    },
     methods: {
       onBackChild (value) {
         this.viewPais = value
@@ -450,5 +468,8 @@
     transform: translateX(0px);
     timing-function: ease-in;
   }
+}
+.pesquisarRight{
+  text-align: right;
 }
 </style>
